@@ -1,14 +1,11 @@
 package sim.solar; 
-
 import java.awt.Graphics;
 import java.lang.reflect.InvocationTargetException;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
-
 import sim.solar.planet.Exhibit;
 import sim.solar.planet.NurseryInterface;
-
 class Simulation extends JPanel implements Runnable {
    /**
 	 * 
@@ -18,20 +15,16 @@ private static final Color colorBlack = new Color(0,0,0);
    private static final Color colorGreen = new Color(30,120,30);
    private static final int screenSize = 600;         // screen size both x and y
    private static final int screenMid = screenSize/2; // mid-screen location 
-   
    // following constants need adjustment 
    private static final int frameDelay = 10;    // millisec delay to slow down animation speed 
    private static final int maxNurseryCount = 1;        // must be adjusted to run all the nurseries
    private static final int cyclesPerSolarSystem = 3*360;   // degrees of rotation allotted to each solar system 
    private static final int pauseDelay = 400; // millisec delay between solar systems 
-   
    private int cycleCount = 1;       // must start at one
    private int nurseryCounter = 1;   // must start at one
-   
    private final Exhibit exhibit  = new Exhibit();
    private NurseryInterface nursery ;  
    private SolarSystem solarSystem  ;
-
    public Simulation() {  
     try {
        nursery = exhibit.GetNursery("PlanetNursery1");  // bootstrap the nursery 
@@ -53,9 +46,7 @@ private static final Color colorBlack = new Color(0,0,0);
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		} 
-//    catch (Exception e) {
-//			e.printStackTrace();
-//		}
+
    }
   
 
@@ -81,16 +72,12 @@ private static final Color colorBlack = new Color(0,0,0);
 			} catch (InvocationTargetException e) {
 				e.printStackTrace();
 			}
-			// catch (Exception e) {
-			// e.printStackTrace();
-			// }
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
     }
   }
-
 
 private void solarSystemSwitch() throws ClassNotFoundException, NoSuchMethodException, InstantiationException,
 		IllegalAccessException, InvocationTargetException, InterruptedException {
